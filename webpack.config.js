@@ -2,10 +2,12 @@ const path = require('path')
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const config = {
-  entry: './client/src/games/index.jsx',
+  entry: {
+    "games/main": './client/src/games/index.jsx'
+  },
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
-    filename: 'games.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
