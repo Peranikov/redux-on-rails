@@ -2,6 +2,7 @@ const path = require('path')
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const config = {
+  target: 'web',
   entry: {
     "games/main": './client/src/games/index.jsx'
   },
@@ -11,6 +12,10 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -25,7 +30,13 @@ const config = {
   },
   plugins: [
     new ManifestPlugin()
-  ]
+  ],
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  }
 };
 
 module.exports = config;
