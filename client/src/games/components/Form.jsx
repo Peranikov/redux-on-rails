@@ -24,7 +24,7 @@ class Form extends React.Component {
     event.preventDefault();
 
     const options = {
-      url: "http://localhost:3000/games",
+      url: "http://localhost:3000/games.json",
       headers: {
         "X-CSRF-Token": document.getElementsByName("csrf-token")[0].content
       },
