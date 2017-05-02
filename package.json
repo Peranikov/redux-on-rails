@@ -1,6 +1,9 @@
 {
   "name": "rails-with-webpack",
   "private": true,
+  "scripts": {
+    "watch": "webpack --progress --colors --watch"
+  },
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
