@@ -36,7 +36,8 @@ const config = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
-  }
+  },
+  devtool: "inline-source-map"
 };
 
 module.exports = config;
