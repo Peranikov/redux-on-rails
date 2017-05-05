@@ -1,7 +1,6 @@
 "use strict";
 
 import React from 'react'
-import request from 'request'
 
 class Form extends React.Component {
 
@@ -23,23 +22,11 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const options = {
-      url: "http://localhost:3000/games.json",
-      headers: {
-        "X-CSRF-Token": document.getElementsByName("csrf-token")[0].content
-      },
-      form: {
-        game: {
-          title: this.state.title
-        }
-      }
-    }
+    const game = {
+      title: this.state.title
+    };
 
-    request.post(options, (err, res, body) => {
-      if (err) {
-        console.error(err);
-      }
-    });
+    this.props.onSubmit(game);
   }
 
   render() {

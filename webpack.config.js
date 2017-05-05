@@ -4,7 +4,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const config = {
   target: 'web',
   entry: {
-    "games/main": './client/src/games/index.jsx'
+    "games/main": ['babel-polyfill', './client/src/games/index.jsx']
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
