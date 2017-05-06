@@ -3,7 +3,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import Form from '../components/Form.jsx'
+import Form from '../components/Form'
+import GameList from '../components/GameList'
 import { requestPostGame } from '../actions'
 
 class App  extends Component {
@@ -13,13 +14,16 @@ class App  extends Component {
   }
 
   handleSubmit(game) {
-    const { dispatch } = this.props
+    const { dispatch } = this.props;
     dispatch(requestPostGame(game));
   }
 
   render() {
+    const { games } = this.props;
+
     return(
       <div>
+        <GameList games={games} />
         <Form onSubmit={this.handleSubmit}/>
       </div>
     )
@@ -31,7 +35,10 @@ App.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  const games = state.fetchGames.games || []
+  return {
+    games
+  }
 }
 
 export default connect(mapStateToProps)(App)

@@ -7,16 +7,32 @@ const requestPostGame = (state = { isPosting: false, postedGame: {} }, action) =
   switch (action.type) {
     case types.REQUEST_POST_GAME :
       const postedGame = action.payload.postedGame;
-      return Object.assign(state, { isPosting: true, postedGame })
+      // FIXME: refactor spread style
+      return Object.assign(state, { isPosting: true, postedGame });
     case types.SUCCESS_POST_GAME :
-      return state
+      // FIXME: refactor spread style
+      return Object.assign(state, { isPosting: false });
+    default:
+      return state;
+  }
+}
+
+const fetchGames = (state = { games: [] }, action) => {
+  switch (action.type) {
+    case types.SUCCESS_FETCH_GAMES :
+      const games = action.payload.fetchedGames;
+      return {
+        ...state,
+        games
+      }
     default:
       return state
   }
 }
 
 const rootReducer = combineReducers({
-  requestPostGame
+  requestPostGame,
+  fetchGames
 });
 
 export default rootReducer

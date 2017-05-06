@@ -27,16 +27,25 @@ function fetchGamesApi() {
     .then(response => response.json())
 }
 
+function* fetchGames() {
+  while(true) {
+    yield take(types.SUCCESS_POST_GAME);
+    yield put(actions.requestFetchGames());
+    const fetchedGames = yield call(fetchGamesApi); // FIXME: Error Handling
+    yield put(actions.successFetchGames(fetchedGames));
+  }
+}
+
 function* postGame() {
   while(true) {
     yield take(types.REQUEST_POST_GAME);
     const { postedGame } = yield select(selectors.requestPostGameSelector);
-    const res = yield call(postGameApi, postedGame);
-    console.log(res);
+    yield call(postGameApi, postedGame); // FIXME: Error Handling
     yield put(actions.successPostGame());
   }
 }
 
 export default function* root() {
+  yield fork(fetchGames);
   yield fork(postGame);
 }
