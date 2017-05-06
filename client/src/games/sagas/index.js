@@ -28,12 +28,9 @@ function fetchGamesApi() {
 }
 
 function* fetchGames() {
-  while(true) {
-    yield take(types.SUCCESS_POST_GAME);
-    yield put(actions.requestFetchGames());
-    const fetchedGames = yield call(fetchGamesApi); // FIXME: Error Handling
-    yield put(actions.successFetchGames(fetchedGames));
-  }
+  yield put(actions.requestFetchGames());
+  const fetchedGames = yield call(fetchGamesApi); // FIXME: Error Handling
+  yield put(actions.successFetchGames(fetchedGames));
 }
 
 function* postGame() {
@@ -42,6 +39,7 @@ function* postGame() {
     const { postedGame } = yield select(selectors.requestPostGameSelector);
     yield call(postGameApi, postedGame); // FIXME: Error Handling
     yield put(actions.successPostGame());
+    yield fork(fetchGames);
   }
 }
 
