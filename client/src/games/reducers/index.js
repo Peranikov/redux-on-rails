@@ -2,6 +2,7 @@
 
 import { combineReducers } from 'redux'
 import * as types from '../actions/actionTypes.js'
+import Game from '../models/game'
 
 const requestPostGame = (state = { isPosting: false, postedGame: {} }, action) => {
   switch (action.type) {
@@ -25,7 +26,8 @@ const requestPostGame = (state = { isPosting: false, postedGame: {} }, action) =
 const fetchGames = (state = { games: [] }, action) => {
   switch (action.type) {
     case types.SUCCESS_FETCH_GAMES :
-      const games = action.payload.fetchedGames;
+      const games = action.payload.fetchedGames.map((g) => (new Game(g)));
+      
       return {
         ...state,
         games
