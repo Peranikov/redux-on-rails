@@ -1,24 +1,25 @@
-# README
+# Redux on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is Ruby on Rails sample application with Redux.
+Using the following technology:
 
-Things you may want to cover:
+* Ruby on Rails 5
+* React
+* Redux
+* react-redux
+* redux-saga
+* Webpack
 
-* Ruby version
+## Setup
 
-* System dependencies
+```bash
+$ bundle install
+$ npm install # or yarn
+$ npm run webpack # build frontend
+```
 
-* Configuration
+## Getting Started
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ bin/rails s
+```
