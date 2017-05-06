@@ -7,7 +7,7 @@ import { call, put, fork, take, select } from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch'
 
 function getCsrfToken() {
-  return document.getElementsByName("csrf-token")[0].content;
+  return document.querySelector("meta[name=csrf-token]").content;
 }
 
 function postGameApi(game) {
