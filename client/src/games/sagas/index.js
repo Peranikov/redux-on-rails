@@ -16,7 +16,7 @@ function postGameApi(game) {
 
   return fetch("http://localhost:3000/games.json", {
     method: 'POST',
-    headers: new Headers({ "X-CSRF-Token": getCsrfToken() }),
+    headers: { "X-CSRF-Token": getCsrfToken() },
     credentials: 'include',
     body: form
   })
