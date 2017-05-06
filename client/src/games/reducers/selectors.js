@@ -1,0 +1,1 @@
+export const requestPostGameSelector = state => state.requestPostGame;

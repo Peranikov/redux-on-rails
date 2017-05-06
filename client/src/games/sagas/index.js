@@ -2,6 +2,7 @@
 
 import * as types from '../actions/actionTypes'
 import * as actions from '../actions/index'
+import * as selectors from '../reducers/selectors'
 import { call, put, fork, take, select } from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch'
 
@@ -29,7 +30,7 @@ function fetchGamesApi() {
 function* postGame() {
   while(true) {
     yield take(types.REQUEST_POST_GAME);
-    const { postedGame } = yield select(state => state.requestPostGame);
+    const { postedGame } = yield select(selectors.requestPostGameSelector);
     const res = yield call(postGameApi, postedGame);
     console.log(res);
     yield put(actions.successPostGame());
