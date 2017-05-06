@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    # FIXME: @games is unnecessary when it is html format
     @games = Game.order(id: :desc).all
   end
 
