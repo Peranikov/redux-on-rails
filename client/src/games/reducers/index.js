@@ -27,7 +27,7 @@ const fetchGames = (state = { games: [] }, action) => {
   switch (action.type) {
     case types.SUCCESS_FETCH_GAMES :
       const games = action.payload.fetchedGames.map((g) => (new Game(g)));
-      
+
       return {
         ...state,
         games
