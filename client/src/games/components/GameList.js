@@ -10,7 +10,7 @@ class GameList extends React.Component {
   }
 
   render() {
-    const items = this.props.games.map((game) => <li>{game.title}</li>)
+    const items = this.props.games.map((game) => <li key={game.id}>{game.title}</li>)
 
     return (
       <ul>{items}</ul>
