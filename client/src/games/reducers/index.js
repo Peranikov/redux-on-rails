@@ -7,11 +7,16 @@ const requestPostGame = (state = { isPosting: false, postedGame: {} }, action) =
   switch (action.type) {
     case types.REQUEST_POST_GAME :
       const postedGame = action.payload.postedGame;
-      // FIXME: refactor spread style
-      return Object.assign(state, { isPosting: true, postedGame });
+      return {
+        ...state,
+        isPosting: true,
+        postedGame
+      };
     case types.SUCCESS_POST_GAME :
-      // FIXME: refactor spread style
-      return Object.assign(state, { isPosting: false });
+      return {
+        ...state,
+        isPosting: false
+      };
     default:
       return state;
   }
@@ -24,7 +29,7 @@ const fetchGames = (state = { games: [] }, action) => {
       return {
         ...state,
         games
-      }
+      };
     default:
       return state
   }
