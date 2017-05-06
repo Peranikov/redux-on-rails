@@ -23,8 +23,8 @@ class App  extends Component {
 
     return(
       <div>
-        <GameList games={games} />
         <Form onSubmit={this.handleSubmit}/>
+        <GameList games={games} />
       </div>
     )
   }
